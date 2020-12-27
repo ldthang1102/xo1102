@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/js/myscript.js"></script>
+    <script> 
+    function confirmDelete(name){
+    let d = confirm('Do you want to delete ' + name + '?');
+    return d;
+    }
+    </script>
+    <title>View Products</title>
+</head>
+<body>
+   
+    <div class="container">
+         <center><h1>All Products</h1></center>
+    <div class="table-responsive">
+         <table  class="table" border="1px">
+        <form action="/doSearch" method="post">
+        Find Product <input type="text" name="txtName" id="">
+        <input type="submit" value="Search">
+        <br>
+        </form>
+
+    </table>
+    <table class="table table-bordered">
+        <thead >
+        <tr class=" thead thead-dark">
+            <th scope="col ">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Color</th>
+            <th scope="col">Size</th>
+            <th scope="col">Delete</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+    
+        {{# each model}}
+            <tr>
+                <td>{{productName}}</td>
+                <td>{{price}}</td>
+                <td>{{color}}</td>
+                <td>{{size}}</td>
+                <td><a href="/delete?id={{_id}}" onclick="return confirmDelete('{{productName}}')">Delete</a></td>
+                <td><a href="/Edit?id={{_id}}">Edit</a></td>
+            </tr>   
+        {{/each}} 
+    </table>
+    </div>
+    </div>
+       
+    </body>
+</body>
+<center>{{> footer}}</center>
+</html>
