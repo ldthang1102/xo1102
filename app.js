@@ -1,10 +1,11 @@
 const express = require('express')
 const hbs = require('hbs')
 const app = express();
+// su dung hbs lam cay thu muc
 app.set('view engine','hbs');
 hbs.registerPartials(__dirname +'/views/partials')
 app.use(express.static(__dirname + '/public'));
-
+//doc thong tin tu text box
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -24,13 +25,12 @@ app.post('/doInsert',async (req,res)=>{
     let priceInput = req.body.txtPrice;
     let colorInput = req.body.txtColor;
     let sizeInput = req.body.txtSize;
-    
+
     let client= await MongoClient.connect(url);  
     let dbo = client.db("ProductSystem"); 
     let newProduct = {productName : nameInput, price:priceInput, color:colorInput,size: sizeInput};
     await dbo.collection("products").insertOne(newProduct);
-   
-    res.redirect('view');
+    res.redirect('view');  
 })
 app.get('/Edit',async (req,res)=>{
     let id = req.query.id;
@@ -48,6 +48,7 @@ app.post('/doEdit',async (req,res)=>{
     let colorInput = req.body.txtColor;
     let sizeInput = req.body.txtSize;
     let newValues ={$set : {productName : name, price:priceInput, color:colorInput,size: sizeInput}};
+    
     var ObjectID = require('mongodb').ObjectID;
     let condition = {"_id" : ObjectID(id)};
     
@@ -65,7 +66,7 @@ app.get('/delete', async (req,res)=>{
     let client= await MongoClient.connect(url);
     let dbo = client.db("ProductSystem");
     await dbo.collection('products').deleteOne(condition)
-  +  res.redirect('view');
+    res.redirect('view');
 })
 app.get('/view',async (req,res)=>{
     let client= await MongoClient.connect(url);  
@@ -82,9 +83,6 @@ app.post('/doSearch',async (req,res)=>{
     let dbo = client.db("ProductSystem")    ;  
     let results = await dbo.collection("products").find({productName:nameInput}).toArray();
     res.render('viewProduct',{model:results})
-})
-app.get('/login',(req,res)=>{
-    res.render('login')
 })
 var PORT = process.env.PORT || 3000
 app.listen(PORT)

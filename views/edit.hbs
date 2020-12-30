@@ -33,6 +33,7 @@
         Size: <input type="text" name="txtSize" value="{{model.size}}">
         <br>
         <input type="submit" value="Update">
+        <h2 class="alert alert-danger">{{{error}}}</h2>
          </form>
                      {{> footer}}
 
@@ -41,24 +42,6 @@
 
         </div>
     </div>
-    
-            
-        
-    </div> 
-{{!-- </div>
-    <h1>Update product</h1>
-    <form action="/doEdit" method="post">
-        <input type="hidden" name="id" value="{{model._id}}">
-        Name: <input type="text" name="txtName" value="{{model.productName}}">
-        <br>
-        Price: <input type="text" name="txtPrice" value="{{model.price}}">
-        <br>
-        Color: <input type="text" name="txtColor" value="{{model.color}}">
-        <br>
-        Size: <input type="text" name="txtSize" value="{{model.size}}">
-        <br>
-        <input type="submit" value="Update">
-    </form> --}}
-    
+ </div> 
 </body>
 </html>

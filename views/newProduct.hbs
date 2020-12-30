@@ -1,61 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/mysStyle.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style>
-    
-</style>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+
+    </style>
     <title>New Product</title>
 </head>
+
 <body>
-    
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="box">
+                        <center>
+                            <h1>New product</h1>
+                        </center>
+                        <div class="box-2">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="box">
-                    <center>
-                <h1>New product</h1>
-            </center> 
-            <div class="box-2">
-                
+                        </div>
+                        <form action="/doInsert" method="post">
+                            Name: <input type="text" class="form-control" name="txtName" id="">
+                            <br>
+                            Price: <input type="text" class="form-control" name="txtPrice" id="">
+                            <br>
+                            Color: <input type="text" class="form-control" name="txtColor" id="">
+                            <br>
+                            Size: <input type="text" class="form-control" name="txtSize" id="">
+                            <br>
+                            <center><input type="submit" value="Create"></center>
+                            <h2 class="alert alert-danger">{{{error}}}</h2>
+                        </form>
+                        {{> footer}}
+                    </div>
+                </div>
             </div>
-                    <form action="/doInsert" method="post" >
-            Name: <input type="text" class="form-control"name="txtName" id="">
-            <br>
-            Price: <input type="text" class="form-control"name="txtPrice" id="">
-            <br>
-            Color: <input type="text" class="form-control"name="txtColor" id="">
-            <br>
-            Size: <input type="text" class="form-control"name="txtSize" id="">
-            <br>
-            <center><input type="submit" value="Create"></center>
-        </form>
-                     {{> footer}}
-
-            </div>
-
-
         </div>
     </div>
-    
-            
-        
-    </div> 
-</div>
-        
-        
-     
-    
-    
-    
-  
 </body>
+
 </html>
